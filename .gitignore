@@ -1,0 +1,36 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Data & warehouse
+pipeline/warehouse/*.duckdb
+data/
+*.parquet
+*.csv
+
+# Models
+forecasting/models/*.pkl
+forecasting/models/*.joblib
+
+# Environment variables / secrets
+.env
+*.env
+
+# dbt
+pipeline/dbt_project/target/
+pipeline/dbt_project/dbt_packages/
+pipeline/dbt_project/logs/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
