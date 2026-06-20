@@ -26,6 +26,7 @@ forecasting/models/*.joblib
 pipeline/dbt_project/target/
 pipeline/dbt_project/dbt_packages/
 pipeline/dbt_project/logs/
+pipeline/dbt_project/.user.yml
 
 # OS junk
 .DS_Store
