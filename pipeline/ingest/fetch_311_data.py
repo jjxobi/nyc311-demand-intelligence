@@ -44,7 +44,6 @@ TARGET_COMPLAINT_TYPES = [
     "Noise - Street/Sidewalk",
     "Water System",
     "Noise - Commercial",
-    "Sanitation Condition",
     "Sewer",
     "Air Quality",
     "Traffic Signal Condition",

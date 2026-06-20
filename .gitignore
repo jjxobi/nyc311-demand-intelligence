@@ -10,7 +10,8 @@ __pycache__/
 
 # Data & warehouse
 pipeline/warehouse/*.duckdb
-data/
+data/raw/
+!data/README.md
 *.parquet
 *.csv
 
