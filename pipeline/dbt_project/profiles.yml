@@ -1,0 +1,7 @@
+nyc311_demand_intelligence:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "../warehouse/nyc311.duckdb"
+      threads: 4

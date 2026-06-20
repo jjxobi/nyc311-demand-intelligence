@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw NYC 311 data loaded directly from Socrata API, partitioned by year/month."
+    database: nyc311
+    schema: main
+    tables:
+      - name: raw_311_requests
+        description: "One row per 311 service request, as fetched from the Socrata API with minimal modification."
+        columns:
+          - name: unique_key
+            description: "Unique identifier for the service request. Primary key."
+          - name: created_date
+            description: "Timestamp the request was created."
+          - name: closed_date
+            description: "Timestamp the request was closed. Null if still open. Stored as string in raw layer -- cast in staging."
+          - name: complaint_type
+            description: "Category of the complaint (e.g., 'Noise - Residential', 'Illegal Parking')."
+          - name: borough
+            description: "NYC borough the request originated from."
+          - name: agency
+            description: "City agency responsible for the request."
+          - name: status
+            description: "Current status of the request (e.g., 'Closed', 'Open', 'In Progress')."
+          - name: incident_zip
+            description: "ZIP code of the incident location. Can be null for non-geocoded requests."
