@@ -18,6 +18,7 @@ data/raw/
 # Models
 forecasting/models/*.pkl
 forecasting/models/*.joblib
+forecasting/models/metrics_summary.json
 
 # Environment variables / secrets
 .env
