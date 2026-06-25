@@ -47,6 +47,7 @@ st.markdown(
     "forecast by complaint category and borough.</p>",
     unsafe_allow_html=True
 )
+
 st.markdown("---")
 
 categories = get_categories()
