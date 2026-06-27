@@ -9,7 +9,7 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Data & warehouse
-pipeline/warehouse/*.duckdb
+#pipeline/warehouse/*.duckdb -- usually this would be ignored but we will use the static duckdb data to save the data from having to be loading everytime the streamlit app runs
 data/raw/
 !data/README.md
 *.parquet
