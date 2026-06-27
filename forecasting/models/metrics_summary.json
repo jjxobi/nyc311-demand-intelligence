@@ -1,0 +1,86 @@
+{
+  "Air Quality": {
+    "model_type": "lightgbm",
+    "mae": 5.24,
+    "rmse": 6.66,
+    "mape": 24.02
+  },
+  "Blocked Driveway": {
+    "model_type": "lightgbm",
+    "mae": 45.38,
+    "rmse": 56.0,
+    "mape": 8.52
+  },
+  "Damaged Tree": {
+    "model_type": "lightgbm",
+    "mae": 69.22,
+    "rmse": 159.01,
+    "mape": 48.66
+  },
+  "HEAT/HOT WATER": {
+    "model_type": "prophet",
+    "mae": 223.07,
+    "rmse": 307.11,
+    "mape": 60.01
+  },
+  "Illegal Parking": {
+    "model_type": "prophet",
+    "mae": 122.95,
+    "rmse": 152.97,
+    "mape": 7.07
+  },
+  "Noise - Commercial": {
+    "model_type": "lightgbm",
+    "mae": 37.26,
+    "rmse": 49.61,
+    "mape": 20.09
+  },
+  "Noise - Residential": {
+    "model_type": "lightgbm",
+    "mae": 138.86,
+    "rmse": 197.84,
+    "mape": 12.25
+  },
+  "Noise - Street/Sidewalk": {
+    "model_type": "prophet",
+    "mae": 243.11,
+    "rmse": 332.36,
+    "mape": 39.75
+  },
+  "PAINT/PLASTER": {
+    "model_type": "lightgbm",
+    "mae": 17.39,
+    "rmse": 22.26,
+    "mape": 10.52
+  },
+  "PLUMBING": {
+    "model_type": "lightgbm",
+    "mae": 30.76,
+    "rmse": 37.54,
+    "mape": 17.37
+  },
+  "Sewer": {
+    "model_type": "lightgbm",
+    "mae": 39.11,
+    "rmse": 107.85,
+    "mape": 27.89
+  },
+  "Street Condition": {
+    "model_type": "lightgbm",
+    "mae": 210.9,
+    "rmse": 290.78,
+    "mape": 35.3
+  },
+  "Traffic Signal Condition": {
+    "model_type": "lightgbm",
+    "mae": 53.99,
+    "rmse": 65.25,
+    "mape": 48.16
+  },
+  "Water System": {
+    "model_type": "lightgbm",
+    "mae": 54.25,
+    "rmse": 85.4,
+    "mape": 27.35
+  }
+}

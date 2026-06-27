@@ -15,10 +15,10 @@ data/raw/
 *.parquet
 *.csv
 
-# Models
-forecasting/models/*.pkl
-forecasting/models/*.joblib
-forecasting/models/metrics_summary.json
+# Models -- unigorned for same reason a the duckdb file above
+#forecasting/models/*.pkl
+#forecasting/models/*.joblib
+#forecasting/models/metrics_summary.json
 
 # Environment variables / secrets
 .env
