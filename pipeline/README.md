@@ -1,4 +1,4 @@
-# Pipeline
+# Pipeline (Component A)
 
 Ingests NYC 311 Service Request data from the Socrata Open Data API and
 transforms it through a staging → intermediate → marts dbt architecture
