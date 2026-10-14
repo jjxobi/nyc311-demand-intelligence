@@ -146,6 +146,7 @@ st.sidebar.markdown("""
 <b>Data</b>: NYC Open Data · Socrata API<br>
 <b>Warehouse</b>: DuckDB · dbt<br>
 <b>Models</b>: Prophet · LightGBM<br>
+<b>MLOps</b>: MLflow · Dagster<br>
 <b>Window</b>: Jun 2023 – Jun 2026<br>
 <b>Records</b>: 6.2M service requests
 </div>
@@ -210,7 +211,10 @@ SARIMA baseline · Prophet · LightGBM<br><br>
 Streamlit Community Cloud<br><br>
 
 <span class="pipeline-step">5 · Query</span><br>
-Natural Language → SQL · Gemini API
+Natural Language → SQL · Gemini API<br><br>
+
+<span class="pipeline-step">6 · Monitor</span><br>
+MLflow tracking + registry · Drift detection · Automated retraining
 
 </div>
 """, unsafe_allow_html=True)

@@ -1,0 +1,59 @@
+name: Monthly pipeline refresh
+
+# Ingests new records, rebuilds the warehouse, checks model drift,
+# and retrains whatever needs it
+#
+# data/raw/ isn't committed (see .gitignore), so each run rebuilds it
+# first from the committed DuckDB warehouse (bootstrap_raw_from_warehouse.py)
+# rather than relying on it surviving between runs.
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"   # 6am UTC on the 1st of each month
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install dbt packages
+        working-directory: pipeline/dbt_project
+        run: dbt deps
+
+      - name: Rebuild data/raw/ from the committed warehouse
+        run: python pipeline/ingest/bootstrap_raw_from_warehouse.py
+
+      - name: Fetch new 311 records since the last load
+        run: python pipeline/ingest/fetch_311_data.py --incremental
+
+      - name: Reload DuckDB from data/raw/
+        run: python pipeline/ingest/load_to_duckdb.py
+
+      - name: dbt build
+        working-directory: pipeline/dbt_project
+        run: |
+          dbt run
+          dbt test
+
+      - name: Check drift, retrain what needs it
+        run: python forecasting/src/retrain_trigger.py
+
+      - name: Commit updated warehouse + model state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add pipeline/warehouse/nyc311.duckdb forecasting/models forecasting/monitoring mlflow.db mlartifacts
+          git diff --cached --quiet || git commit -m "Monthly pipeline refresh: ingest + rebuild + drift check"
+          git push

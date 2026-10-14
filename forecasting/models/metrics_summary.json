@@ -3,84 +3,140 @@
     "model_type": "lightgbm",
     "mae": 5.24,
     "rmse": 6.66,
-    "mape": 24.02
+    "mape": 24.02,
+    "mlflow_run_id": "48b8d919de504dd38bc9938bff650d41",
+    "mlflow_version": 3,
+    "promoted": true,
+    "promotion_reason": "mape 24.02 <= production's 24.02 on the same test window"
   },
   "Blocked Driveway": {
     "model_type": "lightgbm",
     "mae": 45.38,
     "rmse": 56.0,
-    "mape": 8.52
+    "mape": 8.52,
+    "mlflow_run_id": "0f5cc71e89b445549214891a4518d313",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 8.52 <= production mape 8.52"
   },
   "Damaged Tree": {
     "model_type": "lightgbm",
     "mae": 69.22,
     "rmse": 159.01,
-    "mape": 48.66
+    "mape": 48.66,
+    "mlflow_run_id": "40c5032443d1483384e763526625a84f",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 48.66 <= production mape 48.66"
   },
   "HEAT/HOT WATER": {
     "model_type": "prophet",
     "mae": 223.07,
     "rmse": 307.11,
-    "mape": 60.01
+    "mape": 60.01,
+    "mlflow_run_id": "4b86ea85504c4a1e9ff83a53058be9d6",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 60.01 <= production mape 60.01"
   },
   "Illegal Parking": {
     "model_type": "prophet",
     "mae": 122.95,
     "rmse": 152.97,
-    "mape": 7.07
+    "mape": 7.07,
+    "mlflow_run_id": "5d9079007ffd413fbeeaacfed747170d",
+    "mlflow_version": 3,
+    "promoted": true,
+    "promotion_reason": "mape 7.07 <= production's 7.07 on the same test window"
   },
   "Noise - Commercial": {
     "model_type": "lightgbm",
     "mae": 37.26,
     "rmse": 49.61,
-    "mape": 20.09
+    "mape": 20.09,
+    "mlflow_run_id": "2fb1e8c2f982401fbb6cbb9dbf02c7a7",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 20.09 <= production mape 20.09"
   },
   "Noise - Residential": {
     "model_type": "lightgbm",
     "mae": 138.86,
     "rmse": 197.84,
-    "mape": 12.25
+    "mape": 12.25,
+    "mlflow_run_id": "89ea6013f3fd4b42adf6d5556a74db17",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 12.25 <= production mape 12.25"
   },
   "Noise - Street/Sidewalk": {
     "model_type": "prophet",
     "mae": 243.11,
     "rmse": 332.36,
-    "mape": 39.75
+    "mape": 39.75,
+    "mlflow_run_id": "7c2334ac0fd74acd9d09464d3c3dff64",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 39.75 <= production mape 39.75"
   },
   "PAINT/PLASTER": {
     "model_type": "lightgbm",
     "mae": 17.39,
     "rmse": 22.26,
-    "mape": 10.52
+    "mape": 10.52,
+    "mlflow_run_id": "5ac35653b1894c5391bf8aff91603dc7",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 10.52 <= production mape 10.52"
   },
   "PLUMBING": {
     "model_type": "lightgbm",
     "mae": 30.76,
     "rmse": 37.54,
-    "mape": 17.37
+    "mape": 17.37,
+    "mlflow_run_id": "46e6704e0ffa422ca16f95faa1d086f8",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 17.37 <= production mape 17.37"
   },
   "Sewer": {
     "model_type": "lightgbm",
     "mae": 39.11,
     "rmse": 107.85,
-    "mape": 27.89
+    "mape": 27.89,
+    "mlflow_run_id": "5c66abc86026445aad60ec73a0e4302c",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 27.89 <= production mape 27.89"
   },
   "Street Condition": {
     "model_type": "lightgbm",
     "mae": 210.9,
     "rmse": 290.78,
-    "mape": 35.3
+    "mape": 35.3,
+    "mlflow_run_id": "edae9bb9ca4e43278786b0732507a1ca",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 35.3 <= production mape 35.3"
   },
   "Traffic Signal Condition": {
     "model_type": "lightgbm",
     "mae": 53.99,
     "rmse": 65.25,
-    "mape": 48.16
+    "mape": 48.16,
+    "mlflow_run_id": "ac0233c10eba4a3b89c26a3b0af64dea",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 48.16 <= production mape 48.16"
   },
   "Water System": {
     "model_type": "lightgbm",
     "mae": 54.25,
     "rmse": 85.4,
-    "mape": 27.35
+    "mape": 27.35,
+    "mlflow_run_id": "784a2a4889c64733a89f8bdc6aaca04c",
+    "mlflow_version": 2,
+    "promoted": true,
+    "promotion_reason": "mape 27.35 <= production mape 27.35"
   }
 }
