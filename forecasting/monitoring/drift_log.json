@@ -460,5 +460,159 @@
     "production_version": 2,
     "checked_at": "2026-10-14T11:06:12.899412+00:00",
     "window_days": 30
+  },
+  {
+    "category": "Air Quality",
+    "status": "ok",
+    "trailing_mape": 26.82,
+    "baseline_mape": 24.02,
+    "trailing_mae": 6.37,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "Blocked Driveway",
+    "status": "ok",
+    "trailing_mape": 10.23,
+    "baseline_mape": 8.52,
+    "trailing_mae": 58.47,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "Damaged Tree",
+    "status": "ok",
+    "trailing_mape": 36.28,
+    "baseline_mape": 48.66,
+    "trailing_mae": 91.22,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "HEAT/HOT WATER",
+    "status": "ok",
+    "trailing_mape": 79.73,
+    "baseline_mape": 60.01,
+    "trailing_mae": 214.62,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "Illegal Parking",
+    "status": "ok",
+    "trailing_mape": 10.05,
+    "baseline_mape": 7.07,
+    "trailing_mae": 174.22,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "Noise - Commercial",
+    "status": "ok",
+    "trailing_mape": 14.51,
+    "baseline_mape": 20.09,
+    "trailing_mae": 25.3,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "Noise - Residential",
+    "status": "ok",
+    "trailing_mape": 12.3,
+    "baseline_mape": 12.25,
+    "trailing_mae": 149.22,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "Noise - Street/Sidewalk",
+    "status": "ok",
+    "trailing_mape": 50.47,
+    "baseline_mape": 39.75,
+    "trailing_mae": 297.8,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "PAINT/PLASTER",
+    "status": "ok",
+    "trailing_mape": 11.55,
+    "baseline_mape": 10.52,
+    "trailing_mae": 25.72,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "PLUMBING",
+    "status": "ok",
+    "trailing_mape": 18.45,
+    "baseline_mape": 17.37,
+    "trailing_mae": 39.41,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "Sewer",
+    "status": "ok",
+    "trailing_mape": 124.19,
+    "baseline_mape": 27.89,
+    "trailing_mae": 54.88,
+    "drift_flag": true,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "Street Condition",
+    "status": "ok",
+    "trailing_mape": 16.65,
+    "baseline_mape": 35.3,
+    "trailing_mae": 40.06,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "Traffic Signal Condition",
+    "status": "ok",
+    "trailing_mape": 40.54,
+    "baseline_mape": 48.16,
+    "trailing_mae": 50.51,
+    "drift_flag": false,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
+  },
+  {
+    "category": "Water System",
+    "status": "ok",
+    "trailing_mape": 716.48,
+    "baseline_mape": 27.35,
+    "trailing_mae": 297.22,
+    "drift_flag": true,
+    "production_version": null,
+    "checked_at": "2026-10-14T20:41:00.869107+00:00",
+    "window_days": 30
   }
 ]

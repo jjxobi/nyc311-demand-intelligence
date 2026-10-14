@@ -170,5 +170,37 @@
         "promotion_reason": "mape 27.35 <= production mape 27.35"
       }
     }
+  },
+  {
+    "timestamp": "2026-10-14T20:41:02.151020+00:00",
+    "window_days": 30,
+    "forced": false,
+    "dry_run": false,
+    "candidates": {
+      "Sewer": "drift: trailing MAPE 124.2% vs baseline 27.9%",
+      "Water System": "drift: trailing MAPE 716.5% vs baseline 27.4%"
+    },
+    "retrained": {
+      "Sewer": {
+        "model_type": "lightgbm",
+        "mae": 53.17,
+        "rmse": 125.41,
+        "mape": 61.65,
+        "mlflow_run_id": "2937171f639e4e10b148d95fd51b6f09",
+        "mlflow_version": 3,
+        "promoted": true,
+        "promotion_reason": "mape 61.65 <= production's 61.65 on the same test window"
+      },
+      "Water System": {
+        "model_type": "lightgbm",
+        "mae": 141.15,
+        "rmse": 357.46,
+        "mape": 270.81,
+        "mlflow_run_id": "04492961b4b043d69600474386518c68",
+        "mlflow_version": 3,
+        "promoted": true,
+        "promotion_reason": "mape 270.81 <= production's 270.81 on the same test window"
+      }
+    }
   }
 ]
