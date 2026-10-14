@@ -1,8 +1,9 @@
 # Dashboard (Component C)
 
-Streamlit app with three pages. Reads directly from the DuckDB marts layer.
-All data loading cached with `@st.cache_data` (1-hour TTL) to avoid
-redundant queries on widget interaction.
+Streamlit app with four pages. The first three read directly from the
+DuckDB marts layer, all data loading cached with `@st.cache_data`
+(1-hour TTL) to avoid redundant queries on widget interaction. The
+fourth reads from the MLflow tracking store.
 
 ## Pages
 
@@ -23,6 +24,14 @@ Plain-English question interface powered by Gemini. Generates SQL,
 validates it (read-only, no DDL/DML), executes against DuckDB, and
 returns a conversational answer with supporting data table and chart.
 See `assistant/README.md` for full details on the safety approach.
+
+**Model Monitoring**
+Registered model versions per category (current production/staging,
+test MAPE, how many versions have been logged), a per-category MAPE
+history chart across training runs, the drift monitor's current
+read on each category (trailing vs. baseline MAPE), and the full
+retraining trigger decision log. See `forecasting/README.md` for how
+the tracking, drift check, and retraining trigger actually work.
 
 ## Running locally
 

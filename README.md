@@ -13,6 +13,9 @@ An end-to-end data platform for forecasting NYC 311 service request demand and t
 - **Forecasts** daily complaint volume by category using a hybrid Prophet + LightGBM model (27.6% mean MAPE)
 - **Recommends** staffing levels by translating forecasts into FTE guidance with configurable capacity assumptions
 - **Answers** plain-English questions about the data via a Gemini-powered NL-to-SQL assistant with safety validation
+- **Tracks and versions** every model with MLflow — experiment tracking, a model registry with staging/production
+  promotion, drift-based monitoring, and an automated retraining trigger, run unattended on a monthly
+  GitHub Actions schedule (and locally runnable as a Dagster job)
 
 ---
 
@@ -36,10 +39,16 @@ dbt: intermediate          Daily aggregation by category and borough
 dbt: marts                 fct_daily_demand + dim_complaint_category
         │
         ├── forecasting/   SARIMA baseline · Prophet · LightGBM · train.py
+        │       │
+        │       ├── MLflow        Experiment tracking + model registry (staging/production)
+        │       ├── monitor.py    Drift check: trailing MAPE vs. training-time baseline
+        │       └── retrain_trigger.py   Retrains only what drifted or went stale
         │
-        ├── dashboard/     Streamlit app (Forecast Explorer, Staffing, Ask the Data)
+        ├── dashboard/     Streamlit app (Forecast Explorer, Staffing, Ask the Data, Model Monitoring)
         │
-        └── assistant/     Gemini NL-to-SQL with read-only safety validation
+        ├── assistant/     Gemini NL-to-SQL with read-only safety validation
+        │
+        └── Orchestration   GitHub Actions (monthly, unattended) · Dagster (local, same job)
 ```
 
 ---
@@ -74,8 +83,9 @@ Prophet used for HEAT/HOT WATER, Illegal Parking, and Noise - Street/Sidewalk (s
 |---|---|
 | Ingestion | Python · Socrata API · pyarrow |
 | Warehouse | DuckDB · dbt-core · dbt-duckdb |
-| Orchestration | Dagster (defined, locally runnable) |
+| Orchestration | GitHub Actions (monthly, unattended) · Dagster (same job, local/interactive) |
 | Forecasting | statsmodels (SARIMA) · Prophet · LightGBM · scikit-learn |
+| MLOps | MLflow — experiment tracking, model registry, staging/production promotion, drift monitoring |
 | Dashboard | Streamlit · Plotly |
 | LLM Assistant | Gemini API · google-genai |
 | Deployment | Streamlit Community Cloud · Git LFS |
@@ -111,6 +121,20 @@ dbt test
 python forecasting/src/train.py
 ```
 
+Every run is tracked in MLflow (experiment tracking, model registry,
+staging/production promotion) — see `forecasting/README.md` for the full
+MLOps layer: drift monitoring and the automated retraining trigger. That
+trigger runs unattended on a monthly GitHub Actions schedule
+(`.github/workflows/monthly-pipeline.yml`) and is also runnable/inspectable
+locally as a Dagster job.
+
+```bash
+mlflow ui --backend-store-uri sqlite:///mlflow.db    # inspect runs/registry
+python forecasting/src/monitor.py                    # check drift against recent actuals
+python forecasting/src/retrain_trigger.py --dry-run  # see what would be retrained and why
+dagster dev -f pipeline/orchestration/definitions.py # run the same pipeline locally
+```
+
 ### Run the dashboard locally
 
 Create a `.env` file in the project root:
@@ -140,14 +164,24 @@ Four real data quality issues found and explicitly handled during the build:
 
 ```
 nyc311-demand-intelligence/
-├── pipeline/              Component A — ingestion, dbt, orchestration
+├── .github/workflows/     monthly-pipeline.yml — unattended ingest → dbt → drift check/retrain
+├── pipeline/              Component A — ingestion, dbt
+│   └── orchestration/     definitions.py — same pipeline as a local/interactive Dagster job
 ├── forecasting/           Component B — EDA, SARIMA, Prophet, LightGBM, train.py
+│   ├── src/
+│   │   ├── train.py           Trains + logs to MLflow + registers + auto-promotes
+│   │   ├── monitor.py         Drift check: trailing MAPE vs. training-time baseline
+│   │   ├── retrain_trigger.py Decides what needs retraining, retrains it
+│   │   └── mlflow_utils.py    Shared tracking/registry config
+│   └── monitoring/        drift_log.json, retrain_log.json (append-only decision history)
 ├── dashboard/             Component C — Streamlit app
 │   ├── app.py
 │   └── pages/
 │       ├── 1_forecast_explorer.py
 │       ├── 2_staffing_recommendation.py
-│       └── 3_ask_the_data.py
+│       ├── 3_ask_the_data.py
+│       └── 4_model_monitoring.py  Registry state, run history, drift + retrain logs
+├── mlflow.db / mlartifacts/   MLflow tracking store + model artifacts (committed, see below)
 ├── data/                  Raw parquet files (gitignored, regenerable)
 └── docs/                  Architecture diagram, demo assets
 ```

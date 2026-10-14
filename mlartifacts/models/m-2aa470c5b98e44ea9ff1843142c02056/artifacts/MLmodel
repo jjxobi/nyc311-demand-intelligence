@@ -1,0 +1,21 @@
+artifact_path: file:C:/Users/Jesse/git_work/nyc311-demand-intelligence/mlartifacts/models/m-2aa470c5b98e44ea9ff1843142c02056/artifacts
+flavors:
+  prophet:
+    code: null
+    data: model.pr
+    model_type: Prophet
+    prophet_version: 1.3.0
+  python_function:
+    data: model.pr
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.prophet
+    python_version: 3.12.0
+mlflow_version: 3.17.1
+model_id: m-2aa470c5b98e44ea9ff1843142c02056
+model_size_bytes: 223352
+model_uuid: m-2aa470c5b98e44ea9ff1843142c02056
+prompts: null
+run_id: 0b811bd8756b487a874d5ff51ab9feda
+utc_time_created: '2026-10-14 10:21:33.638616'

@@ -30,6 +30,11 @@ pipeline/dbt_project/dbt_packages/
 pipeline/dbt_project/logs/
 pipeline/dbt_project/.user.yml
 
+# dagster scheduler/daemon local state (storage, run db, compute logs)
+pipeline/orchestration/.dagster_home/
+dagster_home/
+.tmp_dagster_home_*/
+
 # OS junk
 .DS_Store
 Thumbs.db

@@ -1,0 +1,27 @@
+artifact_path: file:C:/Users/Jesse/git_work/nyc311-demand-intelligence/mlartifacts/models/m-5205285fa8da473f96f5c5bc5035ebbc/artifacts
+flavors:
+  lightgbm:
+    code: null
+    data: model.skops
+    lgb_version: 4.6.0
+    model_class: lightgbm.sklearn.LGBMRegressor
+    serialization_format: skops
+    skops_trusted_types:
+    - lightgbm.sklearn.LGBMClassifier
+    - collections.OrderedDict
+    - lightgbm.sklearn.LGBMRegressor
+    - lightgbm.basic.Booster
+  python_function:
+    data: model.skops
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.lightgbm
+    python_version: 3.12.0
+mlflow_version: 3.17.1
+model_id: m-5205285fa8da473f96f5c5bc5035ebbc
+model_size_bytes: 132121
+model_uuid: m-5205285fa8da473f96f5c5bc5035ebbc
+prompts: null
+run_id: 9542452347ad49b5908811cbe8c4107b
+utc_time_created: '2026-10-14 10:51:23.432863'

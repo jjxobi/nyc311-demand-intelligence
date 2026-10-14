@@ -46,6 +46,17 @@ dbt run
 dbt test
 ```
 
+`data/raw/` is gitignored, so a fresh clone starts without it. To pick up
+new records without re-pulling three years of history from Socrata,
+rebuild it from the committed warehouse first, then run an incremental
+fetch:
+
+```bash
+python pipeline/ingest/bootstrap_raw_from_warehouse.py
+python pipeline/ingest/fetch_311_data.py --incremental
+python pipeline/ingest/load_to_duckdb.py
+```
+
 ## Data quality findings
 
 Several real data quality issues were found and explicitly handled
@@ -85,10 +96,39 @@ during this build, rather than papered over:
    staging via `row_number()` partitioned on `unique_key`, keeping
    the latest `created_date`.
 
+## Orchestration
+
+Ingestion and dbt runs used to be manual/on-demand only. There are now
+two ways this runs on a schedule instead:
+
+**GitHub Actions** (`.github/workflows/monthly-pipeline.yml`) -- actually
+runs unattended, for free, on GitHub's own runners. Monthly cron (1st of
+the month, 6am UTC) plus a manual trigger. Each run: rebuilds `data/raw/`
+from the committed warehouse (it's gitignored, so nothing persists
+between runs on a stateless runner -- `bootstrap_raw_from_warehouse.py`
+regenerates it from `raw_311_requests`, which always matches reality
+regardless of GitHub cache state), fetches new 311 records
+(`--incremental`), rebuilds the warehouse, runs dbt, checks drift and
+retrains whatever needs it, and commits the result back.
+
+**Dagster** (`pipeline/orchestration/definitions.py`) -- the same job,
+runnable and inspectable locally:
+
+```bash
+dagster dev -f pipeline/orchestration/definitions.py
+```
+
+`dagster dev` runs both the webserver and the daemon that fires its
+schedule, but only for as long as that process stays open. There's no
+hosted Dagster deployment behind this project, so it's the
+interactive/local way to run and watch the same pipeline -- the GitHub
+Actions workflow is what's actually unattended.
+
+See `forecasting/README.md` for what the drift check/retrain step
+actually does (MLflow tracking, model registry, drift detection).
+
 ## Known limitations
 
-- Ingestion and dbt runs are currently manual/on-demand, not
-  scheduled. A GitHub Actions cron workflow could be used in the future to automate this.
 - Incremental load state is inferred by scanning existing parquet
   files for the max `created_date`, rather than tracked in a
   separate metadata table. Fine at this data volume; wouldn't scale
